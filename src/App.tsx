@@ -4,7 +4,6 @@ import {
   Building2,
   CalendarDays,
   CarFront,
-  Check,
   CircleHelp,
   Clock3,
   Eye,
@@ -30,65 +29,108 @@ import {
 } from 'lucide-react'
 
 const categories = [
-  { label: 'Salud y belleza', icon: HeartPulse, tone: 'pink' },
-  { label: 'Hogar y reformas', icon: House, tone: 'sand' },
-  { label: 'Limpieza', icon: Sparkles, tone: 'blue' },
-  { label: 'Mascotas', icon: PawPrint, tone: 'green' },
-  { label: 'Clases y formación', icon: GraduationCap, tone: 'violet' },
-  { label: 'Transporte', icon: CarFront, tone: 'coral' },
-  { label: 'Jardinería', icon: Leaf, tone: 'mint' },
-  { label: 'Eventos', icon: CalendarDays, tone: 'purple' },
-  { label: 'Otros servicios', icon: MoreHorizontal, tone: 'slate' },
+  { code: 'cat_1', label: 'REFORMAS, INSTALACIONES y MANTENIMIENTO DEL HOGAR', shortLabel: 'Reformas', icon: House, color: '#274E13' },
+  { code: 'cat_2', label: 'CLIMATIZACION, ENERGÍA Y ELECTRODOMESTICOS', shortLabel: 'Climatización', icon: Zap, color: '#C9DAF8' },
+  { code: 'cat_3', label: 'SERVICIOS DE LIMPIEZA', shortLabel: 'Limpieza', icon: Sparkles, color: '#E6B8AF' },
+  { code: 'cat_4', label: 'JARDINES, EXTERIORES Y PISCINAS', shortLabel: 'Jardines', icon: Leaf, color: '#34A853' },
+  { code: 'cat_5', label: 'REPARACIONES, MONTAJE Y ASISTENCIA TÉCNICA', shortLabel: 'Reparaciones', icon: BriefcaseBusiness, color: '#E69138' },
+  { code: 'cat_6', label: 'MUDANZAS, TRANSPORTE Y LOGOSTICA', shortLabel: 'Mudanzas', icon: CarFront, color: '#FFFF00' },
+  { code: 'cat_7', label: 'AUTOMOCIÓN, VEHÍCULOS Y MOVILIDAD', shortLabel: 'Automoción', icon: CarFront, color: '#0000FF' },
+  { code: 'cat_8', label: 'TECNOLOGÍA, INFORMÁTICA Y ELECTRÓNICA', shortLabel: 'Tecnología', icon: Grid2X2, color: '#CCCCCC' },
+  { code: 'cat_9', label: 'BELLEZA, ESTÉTICA Y CUIDADO PERSONAL', shortLabel: 'Belleza', icon: Heart, color: '#1C4587' },
+  { code: 'cat_10', label: 'SALUD, BIENESTAR Y TERAPIAS PROFESIONALES', shortLabel: 'Salud', icon: HeartPulse, color: '#134F5C' },
+  { code: 'cat_11', label: 'DEPORTE, ENTRENAMIENTO Y ACTIVIDADES FÍSICAS', shortLabel: 'Deporte', icon: Users, color: '#93C47D' },
+  { code: 'cat_12', label: 'CUIDADO DE PERSONAS, NIÑOS Y ASISTENCIA EN EL HOGAR', shortLabel: 'Cuidados', icon: Users, color: '#D5A6BD' },
+  { code: 'cat_13', label: 'MASCOTAS Y SERVICIOS PARA ANIMALES', shortLabel: 'Mascotas', icon: PawPrint, color: '#00FF00' },
+  { code: 'cat_14', label: 'PROFESIONALES PARA EMPRESA, AUTÓNOMOS Y NEGOCIOS', shortLabel: 'Empresas', icon: BriefcaseBusiness, color: '#EFEFEF' },
+  { code: 'cat_15', label: 'EDUCACIÓN, CLASES PARTICULARES Y FORMACIÓN', shortLabel: 'Educación', icon: GraduationCap, color: '#DD7E6B' },
+  { code: 'cat_16', label: 'EVENTOS, CELEBRACIONES Y ENTRETENIMIENTO', shortLabel: 'Eventos', icon: CalendarDays, color: '#FF0000' },
+  { code: 'cat_17', label: 'HOSTELERÍA, COCINA Y SERVICIOS GASTRONÓMICOS', shortLabel: 'Hostelería', icon: Building2, color: '#1155CC' },
+  { code: 'cat_18', label: 'MODA, COSTURA Y SERVICIOS', shortLabel: 'Moda', icon: UserRound, color: '#B45F06' },
+  { code: 'cat_19', label: 'SERVICIOS INMOBILIARIOS Y PROPIEDADES', shortLabel: 'Inmobiliaria', icon: Building2, color: '#FFF2CC' },
+  { code: 'cat_20', label: 'DISEÑO, MARKETING, COMUNICACIÓN Y CONTENIDO DIGITAL', shortLabel: 'Diseño', icon: Target, color: '#93C47D' },
+  { code: 'cat_21', label: 'SERVICIOS ESPECIALIZADOS Y OTROS PROFESIONALES', shortLabel: 'Otros', icon: MoreHorizontal, color: '#434343' },
 ]
 
 const benefits = [
   {
     icon: ShieldCheck,
-    title: 'Profesionales verificados',
-    text: 'Todos los autónomos y empresas pasan un proceso de verificación de identidad y calidad.',
+    title: 'Perfiles profesionales verificados',
+    text: 'Consulta perfiles con la información y documentación profesional que corresponda revisada por TROBY.',
   },
   {
     icon: Star,
-    title: 'Opiniones reales',
-    text: 'Lee valoraciones y reseñas de otros usuarios antes de contactar.',
+    title: 'Valoraciones de servicios',
+    text: 'Consulta opiniones de otros usuarios y valora al profesional cuando el servicio haya finalizado.',
   },
   {
     icon: MessageCircle,
-    title: 'Contacto directo',
-    text: 'Habla con el profesional o empresa de forma rápida y sencilla.',
+    title: 'Conversación dentro de TROBY',
+    text: 'Envía una solicitud y habla con el profesional para concretar el servicio antes de aceptar una oferta.',
   },
   {
     icon: Grid2X2,
-    title: 'Amplia variedad',
-    text: 'Encuentra servicios de múltiples categorías, todo en un mismo lugar.',
+    title: 'Servicios para necesidades reales',
+    text: 'Explora las mismas categorías y subcategorías disponibles en la aplicación.',
   },
   {
     icon: MapPin,
-    title: 'Cercanía y confianza',
-    text: 'Profesionales y empresas de tu zona, con valoraciones reales.',
+    title: 'Profesionales de tu zona',
+    text: 'Encuentra profesionales y empresas cercanas y elige según el servicio que necesitas.',
   },
   {
     icon: Clock3,
-    title: 'Ahorro de tiempo',
-    text: 'Olvídate de buscar en mil sitios. En TROBY lo tienes todo al alcance de un clic.',
+    title: 'Todo el proceso en un mismo sitio',
+    text: 'Solicitud, conversación, oferta y seguimiento del pedido sin saltar entre distintas plataformas.',
   },
 ]
 
 const faqs = [
-  '¿Cómo funciona TROBY?',
-  'Pagos y precios',
-  'Perfiles y verificación',
-  'Servicios y categorías',
-  'Seguridad y confianza',
-  'Opiniones y valoraciones',
-  'Contacto',
+  {
+    question: '¿Cómo funciona TROBY?',
+    answer:
+      'Busca el servicio que necesitas, elige un profesional y envía una solicitud. Desde ahí podréis hablar, el profesional podrá enviarte una oferta y, si la aceptas, se creará el pedido para gestionar el servicio.',
+  },
+  {
+    question: '¿TROBY es gratis para los clientes?',
+    answer:
+      'Sí. Los clientes no necesitan una suscripción para buscar profesionales, enviar solicitudes y gestionar sus servicios en TROBY.',
+  },
+  {
+    question: '¿Cómo funcionan los pagos del servicio?',
+    answer:
+      'TROBY conecta a clientes y profesionales, pero no procesa el pago del trabajo. El precio y la forma de pago del servicio se acuerdan directamente entre ambas partes.',
+  },
+  {
+    question: '¿Cómo se verifican los profesionales?',
+    answer:
+      'TROBY contempla la revisión de identidad y, cuando corresponda, de la información profesional o empresarial necesaria para utilizar la plataforma como profesional.',
+  },
+  {
+    question: '¿Cómo funcionan las opiniones y valoraciones?',
+    answer:
+      'Cuando un servicio finaliza, el cliente puede dejar una valoración de forma opcional para ayudar a otros usuarios a elegir con más información.',
+  },
+  {
+    question: '¿TROBY comparte la ubicación del profesional?',
+    answer:
+      'No de forma continua. La información necesaria para el trayecto se utiliza cuando el profesional inicia el desplazamiento asociado a un pedido.',
+  },
+  {
+    question: '¿Cuándo estará disponible TROBY?',
+    answer:
+      'Estamos preparando el lanzamiento. Puedes apuntarte a la lista de espera para enterarte cuando la plataforma esté disponible.',
+  },
 ]
 
 function Logo() {
   return (
     <a className="brand" href="#inicio" aria-label="TROBY, inicio">
-      <span className="brand-word">TROBY</span>
-      <span className="brand-mark" aria-hidden="true">✦</span>
+      <img
+        className="brand-logo"
+        src={import.meta.env.BASE_URL + 'troby-logo.webp'}
+        alt="TROBY"
+      />
     </a>
   )
 }
@@ -126,12 +168,15 @@ function PhonePreview() {
           <span>¿Qué servicio necesitas?</span>
         </div>
         <div className="phone-grid">
-          {categories.slice(0, 9).map(({ label, icon: Icon, tone }) => (
-            <div className="phone-category" key={label}>
-              <div className={`phone-category-icon tone-${tone}`}>
+          {categories.slice(0, 9).map(({ code, shortLabel, icon: Icon, color }) => (
+            <div className="phone-category" key={code}>
+              <div
+                className="phone-category-icon"
+                style={{ backgroundColor: color + '24', borderColor: color + '66' }}
+              >
                 <Icon size={15} strokeWidth={1.7} />
               </div>
-              <span>{label.split(' ')[0]}</span>
+              <span>{shortLabel}</span>
             </div>
           ))}
         </div>
@@ -155,8 +200,9 @@ function App() {
             <SectionEyebrow>TU SERVICIO, MÁS CERCA</SectionEyebrow>
             <h1>TROBY conecta clientes con profesionales autónomos y empresas de confianza.</h1>
             <p className="hero-lead">
-              Encuentra el servicio que necesitas, compara perfiles y reseñas, y contacta directamente
-              con el profesional o empresa, de forma rápida y segura.
+              Encuentra el servicio que necesitas, compara perfiles, envía una solicitud y recibe
+              una oferta del profesional. Todo el proceso, desde el primer contacto hasta el pedido,
+              en un mismo lugar.
             </p>
             <div className="button-row">
               <a className="button button-dark" href="#lista-espera">
@@ -179,9 +225,9 @@ function App() {
               <UserRound size={31} strokeWidth={1.5} />
               <div>
                 <h3>Para clientes</h3>
-                <p>Encuentra profesionales y empresas verificadas cerca de ti. Lee valoraciones, compara y contacta.</p>
+                <p>Busca profesionales, compara perfiles y envía una solicitud para empezar a concretar el servicio.</p>
                 <a href="#lista-espera" className="text-link">
-                  Únete a la lista de espera <ArrowRight size={14} />
+                  Quiero conocer TROBY <ArrowRight size={14} />
                 </a>
               </div>
             </article>
@@ -189,67 +235,63 @@ function App() {
               <BriefcaseBusiness size={31} strokeWidth={1.5} />
               <div>
                 <h3>Para autónomos y empresas</h3>
-                <p>Da visibilidad a tu servicio, recibe contactos de clientes y haz crecer tu negocio.</p>
+                <p>Da visibilidad a tus servicios, recibe solicitudes de clientes y envía ofertas desde TROBY.</p>
                 <a href="#lista-espera" className="text-link">
-                  Únete a la lista de espera <ArrowRight size={14} />
+                  Quiero ofrecer mis servicios <ArrowRight size={14} />
                 </a>
               </div>
             </article>
           </div>
-
-          <a className="hero-bottom-strip" href="#como-funciona">
-            <span>
-              <strong>¿Cómo funciona?</strong>
-              <small>En 3 pasos, es muy fácil. Solo tienes que seguir unos simples pasos.</small>
-            </span>
-            <span className="button button-light button-small">
-              Descubrir cómo funciona <ArrowRight size={14} />
-            </span>
-          </a>
         </section>
 
         <section className="section split-section" id="como-funciona">
           <div className="section-copy-wide">
             <SectionEyebrow>CÓMO FUNCIONA</SectionEyebrow>
-            <h2>En 3 pasos, conecta con el servicio que necesitas.</h2>
+            <h2>De la búsqueda al servicio, con cada paso claro.</h2>
             <p>
-              Buscar, elegir y contactar. Así de fácil. En TROBY te ponemos en contacto con profesionales
-              y empresas de confianza, de forma rápida y segura.
+              TROBY organiza el proceso para que cliente y profesional sepan en todo momento
+              qué están acordando y en qué estado se encuentra el servicio.
             </p>
           </div>
 
           <div className="steps-grid">
             <article className="step-card">
               <span className="step-number">1</span>
-              <UserRound size={38} strokeWidth={1.45} />
-              <h3>Elige el servicio</h3>
-              <p>Busca entre cientos de categorías y encuentra al profesional o empresa que necesitas.</p>
+              <Search size={38} strokeWidth={1.45} />
+              <h3>Encuentra el servicio</h3>
+              <p>Explora categorías, perfiles y valoraciones para elegir al profesional o empresa que encaje contigo.</p>
             </article>
             <article className="step-card">
               <span className="step-number">2</span>
               <MessageCircle size={38} strokeWidth={1.45} />
-              <h3>Contacta directamente</h3>
-              <p>Escribe desde el chat de TROBY o llama. Sin intermediarios.</p>
+              <h3>Envía una solicitud</h3>
+              <p>Explica qué necesitas y abre la conversación con el profesional para concretar los detalles.</p>
             </article>
             <article className="step-card">
               <span className="step-number">3</span>
+              <BriefcaseBusiness size={38} strokeWidth={1.45} />
+              <h3>Recibe y acepta la oferta</h3>
+              <p>El profesional te envía su propuesta. Cuando la aceptas, TROBY crea el pedido con el servicio acordado.</p>
+            </article>
+            <article className="step-card">
+              <span className="step-number">4</span>
               <Star size={38} strokeWidth={1.45} />
-              <h3>Disfruta del servicio</h3>
-              <p>Conoce al profesional, consulta reseñas y habla con total libertad.</p>
+              <h3>Gestiona y valora</h3>
+              <p>Sigue el pedido, confirma la finalización del trabajo y deja una valoración si quieres.</p>
             </article>
           </div>
 
           <div className="center-action">
             <a className="button button-light" href="#categorias">
-              Explorar categorías <ArrowRight size={14} />
+              Ver categorías disponibles <ArrowRight size={14} />
             </a>
           </div>
 
           <div className="info-strip">
-            <Mail size={28} />
+            <MessageCircle size={28} />
             <div>
-              <strong>Rápido, seguro y sin complicaciones.</strong>
-              <span>TROBY facilita el contacto, tú eliges.</span>
+              <strong>La solicitud abre el contacto.</strong>
+              <span>Así cada conversación parte de un servicio concreto y no de un mensaje sin contexto.</span>
             </div>
           </div>
         </section>
@@ -258,8 +300,11 @@ function App() {
           <div className="section-heading-row">
             <div>
               <SectionEyebrow>VENTAJAS</SectionEyebrow>
-              <h2>Más que un servicio,<br />una ventaja.</h2>
-              <p>En TROBY verás un servicio cercano, seguro y eficiente. Descubrirás todo lo que nos hace diferentes.</p>
+              <h2>Menos vueltas para encontrar y contratar un servicio.</h2>
+              <p>
+                TROBY reúne la información que necesitas para elegir y mantiene solicitud, conversación,
+                oferta y pedido dentro del mismo flujo.
+              </p>
             </div>
             <div className="benefit-orbit" aria-hidden="true">
               {[ShieldCheck, Star, MessageCircle, Users, Zap, Clock3].map((Icon, index) => (
@@ -277,64 +322,51 @@ function App() {
               </article>
             ))}
           </div>
-
-          <div className="info-strip">
-            <Clock3 size={30} />
-            <div>
-              <strong>Tu tiempo vale. Nosotros lo hacemos más fácil.</strong>
-              <span>Conecta, compara y elige con confianza.</span>
-            </div>
-          </div>
         </section>
 
         <section className="section" id="categorias">
           <div className="categories-heading">
             <div>
               <SectionEyebrow>CATEGORÍAS</SectionEyebrow>
-              <h2>Encuentra el servicio<br />que necesitas.</h2>
-              <p>Explora todas las categorías y encuentra el profesional o la empresa ideal para ti.</p>
+              <h2>Los mismos servicios que encontrarás en la app.</h2>
+              <p>
+                Estas son las 21 categorías principales activas actualmente en TROBY.
+                Cada una agrupa sus propias subcategorías de servicios.
+              </p>
             </div>
-            <div className="category-search">
-              <Search size={17} />
-              <span>¿Qué servicio necesitas?</span>
+            <div className="categories-meta" aria-label="21 categorías principales">
+              <Grid2X2 size={18} />
+              <strong>21</strong>
+              <span>categorías principales</span>
             </div>
           </div>
 
           <div className="categories-grid">
-            {categories.map(({ label, icon: Icon, tone }) => (
-              <article className="category-card" key={label}>
-                <div className={`category-icon tone-${tone}`}>
-                  <Icon size={28} strokeWidth={1.6} />
+            {categories.map(({ code, label, icon: Icon, color }) => (
+              <article className="category-card" key={code}>
+                <div
+                  className="category-icon"
+                  style={{ backgroundColor: color + '24', borderColor: color + '66' }}
+                >
+                  <Icon size={26} strokeWidth={1.6} />
                 </div>
                 <span>{label}</span>
               </article>
             ))}
-            <article className="category-card category-card-cta">
-              <div className="category-icon tone-rose">
-                <Mail size={27} strokeWidth={1.6} />
-              </div>
-              <span>Ver todas las categorías</span>
-            </article>
           </div>
 
-          <div className="info-strip categories-strip">
-            <MapPin size={28} />
-            <div>
-              <strong>¿No encuentras lo que buscas?</strong>
-              <span>También puedes contactar directamente a profesionales y empresas a través de nuestro buscador.</span>
-            </div>
-            <a href="#lista-espera" className="button button-dark button-small">
-              Ver todas las categorías <ArrowRight size={14} />
-            </a>
-          </div>
+          <p className="categories-footnote">
+            La web utiliza la misma estructura de categorías principales que la aplicación para evitar
+            que un usuario encuentre servicios distintos según dónde consulte TROBY.
+          </p>
         </section>
 
         <section className="section faq-section" id="faq">
           <div className="faq-heading">
             <div>
               <SectionEyebrow>PREGUNTAS FRECUENTES</SectionEyebrow>
-              <h2>Resuelve tus dudas.</h2>
-              <p>Aquí encontrarás las preguntas más comunes sobre TROBY y cómo funciona nuestra plataforma.</p>
+              <h2>Lo importante, explicado sin rodeos.</h2>
+              <p>Resolvemos las dudas principales sobre el funcionamiento de TROBY antes del lanzamiento.</p>
             </div>
             <div className="faq-illustration">
               <CircleHelp size={74} strokeWidth={1.3} />
@@ -342,26 +374,15 @@ function App() {
           </div>
 
           <div className="faq-list">
-            {faqs.map((faq) => (
-              <details key={faq}>
+            {faqs.map(({ question, answer }) => (
+              <details key={question}>
                 <summary>
-                  <span>{faq}</span>
+                  <span>{question}</span>
                   <span>+</span>
                 </summary>
-                <p>
-                  Estamos preparando esta información para el lanzamiento. Queremos que cada respuesta sea clara,
-                  útil y refleje exactamente cómo funcionará TROBY.
-                </p>
+                <p>{answer}</p>
               </details>
             ))}
-          </div>
-
-          <div className="info-strip">
-            <Mail size={29} />
-            <div>
-              <strong>¿Tienes alguna duda?</strong>
-              <span>Muy pronto habilitaremos un canal de contacto directo para ayudarte.</span>
-            </div>
           </div>
         </section>
 
@@ -369,10 +390,11 @@ function App() {
           <div className="about-top">
             <div>
               <SectionEyebrow>SOBRE TROBY</SectionEyebrow>
-              <h2>Conectamos personas<br />con profesionales de confianza.</h2>
+              <h2>Conectamos personas con profesionales de confianza.</h2>
               <p>
-                TROBY nace con una idea clara: hacer más fácil el acceso a servicios de calidad, de forma rápida,
-                segura y cercana. Creemos en el talento local, en el trabajo bien hecho y en la importancia de la confianza.
+                TROBY nace con una idea clara: hacer más fácil encontrar, comparar y contratar servicios
+                profesionales cercanos. Queremos que el talento local tenga una forma sencilla de llegar
+                a nuevos clientes y que cada cliente pueda decidir con más información.
               </p>
             </div>
             <div className="about-logo-card">
@@ -385,41 +407,33 @@ function App() {
             <article>
               <Target size={28} />
               <h3>Nuestra misión</h3>
-              <p>Facilitar el acceso a servicios profesionales y de calidad, conectando personas y talento local.</p>
+              <p>Facilitar el acceso a servicios profesionales y conectar personas con talento local.</p>
             </article>
             <article>
               <Eye size={28} />
               <h3>Nuestra visión</h3>
-              <p>Ser la plataforma de referencia en servicios profesionales de confianza en toda España y más allá.</p>
+              <p>Construir una plataforma de referencia para encontrar servicios profesionales de confianza.</p>
             </article>
             <article>
               <Heart size={28} />
               <h3>Nuestros valores</h3>
-              <p>Confianza, cercanía, transparencia y compromiso con nuestra comunidad.</p>
+              <p>Confianza, cercanía, transparencia y una experiencia sencilla para ambas partes.</p>
             </article>
             <article>
               <Users size={28} />
               <h3>Nuestro equipo</h3>
-              <p>Un equipo joven y motivado, con muchas ganas de hacer crecer TROBY.</p>
+              <p>Un equipo joven desarrollando TROBY desde España con una visión de crecimiento progresivo.</p>
             </article>
-          </div>
-
-          <div className="info-strip">
-            <MessageCircle size={28} />
-            <div>
-              <strong>Juntos hacemos posible</strong>
-              <span>una comunidad de profesionales y clientes más conectada.</span>
-            </div>
           </div>
         </section>
 
         <section className="section waitlist-section" id="lista-espera">
           <div className="waitlist-heading">
             <SectionEyebrow>LISTA DE ESPERA</SectionEyebrow>
-            <h2>Sé de los primeros en<br />descubrir TROBY.</h2>
+            <h2>Sé de los primeros en descubrir TROBY.</h2>
             <p>
-              Regístrate en nuestra lista de espera y sé el primero en enterarte cuando la plataforma esté disponible.
-              Solo te llevará un minuto.
+              Apúntate a la lista de espera y entérate cuando la plataforma esté disponible.
+              Estamos preparando el siguiente paso de la web para habilitar el registro.
             </p>
           </div>
 
@@ -427,7 +441,7 @@ function App() {
             <article>
               <UserRound size={31} />
               <h3>Soy cliente</h3>
-              <p>Quiero encontrar profesionales y empresas de confianza.</p>
+              <p>Quiero encontrar profesionales y empresas para los servicios que necesito.</p>
               <button type="button" className="button button-dark waitlist-button">
                 Próximamente <ArrowRight size={14} />
               </button>
@@ -435,7 +449,7 @@ function App() {
             <article>
               <BriefcaseBusiness size={31} />
               <h3>Soy autónomo</h3>
-              <p>Quiero ofrecer mis servicios y llegar a más clientes.</p>
+              <p>Quiero ofrecer mis servicios, recibir solicitudes y llegar a más clientes.</p>
               <button type="button" className="button button-dark waitlist-button">
                 Próximamente <ArrowRight size={14} />
               </button>
@@ -443,7 +457,7 @@ function App() {
             <article>
               <Building2 size={31} />
               <h3>Soy empresa</h3>
-              <p>Quiero publicar mis servicios y crecer con TROBY.</p>
+              <p>Quiero mostrar los servicios de mi empresa y conectar con nuevos clientes.</p>
               <button type="button" className="button button-dark waitlist-button">
                 Próximamente <ArrowRight size={14} />
               </button>
@@ -453,8 +467,8 @@ function App() {
           <div className="info-strip">
             <Mail size={29} />
             <div>
-              <strong>¿Tienes alguna duda?</strong>
-              <span>El formulario de contacto llegará en la siguiente fase de la web.</span>
+              <strong>La lista de espera será el siguiente paso.</strong>
+              <span>El formulario todavía no está activo; estos botones indican el estado real del lanzamiento.</span>
             </div>
           </div>
         </section>
