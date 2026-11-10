@@ -790,7 +790,7 @@ h3 {
     border-top: 1px solid var(--line);
   }
 
-    .steps-grid {
+  .steps-grid {
     grid-template-columns: 1fr;
     margin-top: 35px;
   }
@@ -847,7 +847,7 @@ h3 {
     padding: 20px;
   }
 
-    .faq-illustration,
+  .faq-illustration,
   .benefit-orbit {
     width: min(220px, 72vw);
   }
