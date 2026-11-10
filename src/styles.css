@@ -99,24 +99,16 @@ h3 {
 }
 
 .brand {
-  position: relative;
   display: inline-flex;
-  align-items: flex-start;
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 1;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
-.brand-word {
-  font-size: 1.25rem;
-}
-
-.brand-mark {
-  margin-left: 2px;
-  margin-top: -7px;
-  color: #ef3c3c;
-  font-size: 0.9rem;
-  transform: rotate(18deg);
+.brand-logo {
+  display: block;
+  width: 108px;
+  height: auto;
+  mix-blend-mode: multiply;
 }
 
 .desktop-nav {
@@ -366,34 +358,13 @@ h3 {
   font-weight: 750;
 }
 
-.hero-bottom-strip {
-  grid-column: 1 / -1;
-  min-height: 94px;
-  margin: 0 -86px;
-  padding: 20px 86px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  background: linear-gradient(90deg, #eef4f6, #f6f9fa);
-}
-
-.hero-bottom-strip span:first-child {
-  display: grid;
-  gap: 4px;
-}
-
-.hero-bottom-strip small {
-  color: var(--muted);
-}
-
 .section-copy-wide {
   max-width: 880px;
 }
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin: 58px 0 40px;
 }
 
@@ -523,48 +494,57 @@ h3 {
   font-size: 0.78rem;
 }
 
-.category-search {
+.categories-meta {
   justify-self: end;
-  width: min(360px, 100%);
-  display: flex;
+  width: min(280px, 100%);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
   align-items: center;
   gap: 10px;
-  padding: 13px 18px;
+  padding: 15px 18px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  color: #7d8e97;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #596e79;
   font-size: 0.78rem;
+}
+
+.categories-meta strong {
+  color: var(--ink);
+  font-size: 1.05rem;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin: 44px 0 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 44px 0 22px;
 }
 
 .category-card {
-  min-height: 180px;
+  min-height: 126px;
   display: grid;
-  place-items: center;
-  align-content: center;
+  grid-template-columns: auto 1fr;
+  align-items: center;
   gap: 18px;
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 700;
+  padding: 22px;
+  text-align: left;
+  font-size: 0.74rem;
+  font-weight: 760;
+  line-height: 1.4;
 }
 
 .category-icon {
-  width: 67px;
-  height: 67px;
+  width: 54px;
+  height: 54px;
+  border: 1px solid;
+  flex: 0 0 auto;
 }
 
-.category-card-cta {
-  border-style: dashed;
-}
-
-.categories-strip .button {
-  margin-left: auto;
+.categories-footnote {
+  max-width: 850px;
+  margin: 0;
+  font-size: 0.78rem;
 }
 
 .faq-illustration {
@@ -622,8 +602,8 @@ h3 {
   color: var(--muted);
 }
 
-.about-logo-card .brand-word {
-  font-size: 2.5rem;
+.about-logo-card .brand-logo {
+  width: min(270px, 72%);
 }
 
 .values-grid {
@@ -695,8 +675,8 @@ h3 {
   background: #9db0ba;
 }
 
-.footer .brand-word {
-  font-size: 2rem;
+.footer .brand-logo {
+  width: 165px;
 }
 
 @media (max-width: 1100px) {
@@ -723,8 +703,21 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .category-search {
+  .categories-meta {
     justify-self: stretch;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step-card:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .step-card:nth-child(4) {
+    border-top: 1px solid var(--line);
   }
 
   .benefits-grid,
@@ -797,16 +790,14 @@ h3 {
     border-top: 1px solid var(--line);
   }
 
-  .hero-bottom-strip {
-    margin: 0 -22px;
-    padding: 20px 22px;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .steps-grid {
     grid-template-columns: 1fr;
     margin-top: 35px;
+  }
+
+  .step-card:nth-child(3),
+  .step-card:nth-child(4) {
+    border-left: 0;
   }
 
   .step-card {
@@ -836,7 +827,8 @@ h3 {
   }
 
   .category-card {
-    min-height: 145px;
+    min-height: 112px;
+    padding: 18px;
   }
 
   .values-grid article {
@@ -853,10 +845,6 @@ h3 {
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 20px;
-  }
-
-  .categories-strip .button {
-    margin-left: 0;
   }
 
   .faq-illustration,
