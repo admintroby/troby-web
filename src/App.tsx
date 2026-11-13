@@ -433,11 +433,6 @@ function App() {
                 oferta y pedido dentro del mismo flujo.
               </p>
             </div>
-            <div className="benefit-orbit" aria-hidden="true">
-              {[ShieldCheck, Star, MessageCircle, Users, Zap, Clock3].map((Icon, index) => (
-                <span key={index}><Icon size={24} /></span>
-              ))}
-            </div>
           </div>
 
           <div className="benefits-grid">
