@@ -138,6 +138,10 @@ h3 {
   background: #11181d;
 }
 
+.mobile-nav-only {
+  display: none;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -735,19 +739,57 @@ h3 {
 }
 
 @media (max-width: 720px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
   .site-header {
     padding: 10px 12px 0;
   }
 
   .header-inner {
     min-height: 58px;
-    padding: 0 14px;
+    padding: 0 12px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .brand-logo {
+    width: 82px;
+  }
+
+  .desktop-nav {
+    display: flex;
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .desktop-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktop-nav a {
+    flex: 0 0 auto;
+    padding: 19px 0 17px;
+    white-space: nowrap;
+    font-size: 0.72rem;
+  }
+
+  .desktop-nav a:hover::after {
+    bottom: 10px;
+  }
+
+  .mobile-nav-only {
+    display: inline-block;
   }
 
   .header-inner > .button {
-    min-height: 34px;
-    padding-inline: 11px;
-    font-size: 0.67rem;
+    display: none;
   }
 
   .section {
