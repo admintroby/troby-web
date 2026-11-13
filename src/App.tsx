@@ -135,7 +135,7 @@ function Logo() {
   )
 }
 
-function Header({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
+function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -145,14 +145,8 @@ function Header({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
           <a href="#ventajas">Ventajas</a>
           <a href="#categorias">Categorías</a>
           <a href="#faq">FAQ</a>
-          <button className="nav-link-button mobile-nav-only" type="button" onClick={onOpenWaitlist}>
-            Lista de espera
-          </button>
+          <a href="#sobre-troby">Sobre TROBY</a>
         </nav>
-        <button className="button button-dark button-small" type="button" onClick={onOpenWaitlist}>
-          Únete a la lista de espera
-          <ArrowRight size={14} />
-        </button>
       </div>
     </header>
   )
@@ -292,56 +286,22 @@ function App() {
 
   return (
     <>
-      <Header onOpenWaitlist={() => setIsWaitlistOpen(true)} />
+      <Header />
       <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       <main>
-        <section className="hero section" id="inicio">
-          <div className="hero-copy">
-            <SectionEyebrow>TU SERVICIO, MÁS CERCA</SectionEyebrow>
-            <h1>TROBY conecta clientes con profesionales autónomos y empresas de confianza.</h1>
-            <p className="hero-lead">
-              Encuentra el servicio que necesitas, compara perfiles, envía una solicitud y recibe
-              una oferta del profesional. Todo el proceso, desde el primer contacto hasta el pedido,
-              en un mismo lugar.
-            </p>
-            <div className="button-row">
-              <button className="button button-dark" type="button" onClick={() => setIsWaitlistOpen(true)}>
-                Únete a la lista de espera
-                <ArrowRight size={15} />
-              </button>
-              <a className="button button-light" href="#como-funciona">
-                Descubre cómo funciona
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="hero-glow" />
-            <PhonePreview />
-          </div>
-
-          <div className="audience-panel">
-            <article className="audience-card">
-              <UserRound size={31} strokeWidth={1.5} />
-              <div>
-                <h3>Para clientes</h3>
-                <p>Busca profesionales, compara perfiles y envía una solicitud para empezar a concretar el servicio.</p>
-                <button type="button" className="text-link text-link-button" onClick={() => setIsWaitlistOpen(true)}>
-                  Quiero conocer TROBY <ArrowRight size={14} />
-                </button>
-              </div>
-            </article>
-            <article className="audience-card">
-              <BriefcaseBusiness size={31} strokeWidth={1.5} />
-              <div>
-                <h3>Para autónomos y empresas</h3>
-                <p>Da visibilidad a tus servicios, recibe solicitudes de clientes y envía ofertas desde TROBY.</p>
-                <button type="button" className="text-link text-link-button" onClick={() => setIsWaitlistOpen(true)}>
-                  Quiero ofrecer mis servicios <ArrowRight size={14} />
-                </button>
-              </div>
-            </article>
+        <section className="hero hero-minimal section" id="inicio">
+          <div className="hero-brand">
+            <img
+              className="hero-brand-logo"
+              src={import.meta.env.BASE_URL + 'troby-logo.webp'}
+              alt="TROBY"
+            />
+            <h1>Tu servicio, más cerca.</h1>
+            <button className="button button-dark hero-waitlist-button" type="button" onClick={() => setIsWaitlistOpen(true)}>
+              Únete a la lista de espera
+              <ArrowRight size={15} />
+            </button>
           </div>
         </section>
 
@@ -487,6 +447,46 @@ function App() {
           </div>
         </section>
 
+
+        <section className="section about-section" id="sobre-troby">
+          <div className="about-app-grid">
+            <div className="about-app-copy">
+              <SectionEyebrow>SOBRE TROBY</SectionEyebrow>
+              <h2>Una forma más sencilla de encontrar y contratar servicios profesionales.</h2>
+              <p>
+                TROBY es una aplicación que conecta a clientes con autónomos y empresas de su zona.
+                El objetivo es que encontrar a la persona adecuada, explicar qué necesitas, recibir
+                una oferta y seguir el servicio sea un proceso claro y centralizado.
+              </p>
+              <p>
+                El cliente puede comparar perfiles, valoraciones y servicios antes de enviar una solicitud.
+                El profesional recibe esa solicitud, habla con el cliente y puede enviar una oferta que,
+                al aceptarse, pasa a convertirse en un pedido dentro de la aplicación.
+              </p>
+
+              <div className="about-audiences">
+                <article>
+                  <UserRound size={28} strokeWidth={1.5} />
+                  <div>
+                    <h3>Para clientes</h3>
+                    <p>Encuentra profesionales, compara opciones y gestiona cada servicio desde un mismo lugar.</p>
+                  </div>
+                </article>
+                <article>
+                  <BriefcaseBusiness size={28} strokeWidth={1.5} />
+                  <div>
+                    <h3>Para profesionales y empresas</h3>
+                    <p>Da visibilidad a tus servicios, recibe solicitudes y convierte oportunidades en pedidos.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div className="about-app-preview">
+              <PhonePreview />
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
