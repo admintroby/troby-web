@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -12,7 +13,6 @@ import {
   HeartPulse,
   House,
   Leaf,
-  Mail,
   MapPin,
   MessageCircle,
   MoreHorizontal,
@@ -25,6 +25,7 @@ import {
   UserRound,
   Users,
   Zap,
+  X,
 } from 'lucide-react'
 
 const categories = [
@@ -134,7 +135,7 @@ function Logo() {
   )
 }
 
-function Header() {
+function Header({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -144,14 +145,113 @@ function Header() {
           <a href="#ventajas">Ventajas</a>
           <a href="#categorias">Categorías</a>
           <a href="#faq">FAQ</a>
-          <a className="mobile-nav-only" href="#lista-espera">Lista de espera</a>
+          <button className="nav-link-button mobile-nav-only" type="button" onClick={onOpenWaitlist}>
+            Lista de espera
+          </button>
         </nav>
-        <a className="button button-dark button-small" href="#lista-espera">
+        <button className="button button-dark button-small" type="button" onClick={onOpenWaitlist}>
           Únete a la lista de espera
           <ArrowRight size={14} />
-        </a>
+        </button>
       </div>
     </header>
+  )
+}
+
+function WaitlistModal({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) {
+  const [notice, setNotice] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!open) {
+      setNotice(null)
+      return
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open, onClose])
+
+  if (!open) return null
+
+  const options = [
+    {
+      icon: UserRound,
+      title: 'Soy cliente',
+      text: 'Quiero encontrar profesionales y empresas para los servicios que necesito.',
+      action: 'Unirme como cliente',
+    },
+    {
+      icon: BriefcaseBusiness,
+      title: 'Soy autónomo',
+      text: 'Quiero ofrecer mis servicios, recibir solicitudes y llegar a más clientes.',
+      action: 'Unirme como autónomo',
+    },
+    {
+      icon: Building2,
+      title: 'Soy empresa',
+      text: 'Quiero mostrar los servicios de mi empresa y conectar con nuevos clientes.',
+      action: 'Unirme como empresa',
+    },
+  ]
+
+  return (
+    <div
+      className="modal-backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <section className="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
+        <button className="modal-close" type="button" onClick={onClose} aria-label="Cerrar">
+          <X size={20} />
+        </button>
+
+        <div className="waitlist-modal-heading">
+          <SectionEyebrow>LISTA DE ESPERA</SectionEyebrow>
+          <h2 id="waitlist-title">Elige cómo quieres descubrir TROBY.</h2>
+          <p>Selecciona el perfil que mejor encaja contigo.</p>
+        </div>
+
+        <div className="waitlist-modal-grid">
+          {options.map(({ icon: Icon, title, text, action }) => (
+            <article className="waitlist-modal-card" key={title}>
+              <Icon size={31} strokeWidth={1.5} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <button
+                type="button"
+                className="button button-dark waitlist-button"
+                onClick={() =>
+                  setNotice('Estamos preparando el formulario de alta de la lista de espera. Este será el siguiente paso.')
+                }
+              >
+                {action}
+                <ArrowRight size={14} />
+              </button>
+            </article>
+          ))}
+        </div>
+
+        {notice && <p className="waitlist-modal-notice">{notice}</p>}
+      </section>
+    </div>
   )
 }
 
@@ -188,9 +288,12 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+
   return (
     <>
-      <Header />
+      <Header onOpenWaitlist={() => setIsWaitlistOpen(true)} />
+      <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       <main>
         <section className="hero section" id="inicio">
@@ -203,10 +306,10 @@ function App() {
               en un mismo lugar.
             </p>
             <div className="button-row">
-              <a className="button button-dark" href="#lista-espera">
+              <button className="button button-dark" type="button" onClick={() => setIsWaitlistOpen(true)}>
                 Únete a la lista de espera
                 <ArrowRight size={15} />
-              </a>
+              </button>
               <a className="button button-light" href="#como-funciona">
                 Descubre cómo funciona
               </a>
@@ -224,9 +327,9 @@ function App() {
               <div>
                 <h3>Para clientes</h3>
                 <p>Busca profesionales, compara perfiles y envía una solicitud para empezar a concretar el servicio.</p>
-                <a href="#lista-espera" className="text-link">
+                <button type="button" className="text-link text-link-button" onClick={() => setIsWaitlistOpen(true)}>
                   Quiero conocer TROBY <ArrowRight size={14} />
-                </a>
+                </button>
               </div>
             </article>
             <article className="audience-card">
@@ -234,9 +337,9 @@ function App() {
               <div>
                 <h3>Para autónomos y empresas</h3>
                 <p>Da visibilidad a tus servicios, recibe solicitudes de clientes y envía ofertas desde TROBY.</p>
-                <a href="#lista-espera" className="text-link">
+                <button type="button" className="text-link text-link-button" onClick={() => setIsWaitlistOpen(true)}>
                   Quiero ofrecer mis servicios <ArrowRight size={14} />
-                </a>
+                </button>
               </div>
             </article>
           </div>
@@ -384,51 +487,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section waitlist-section" id="lista-espera">
-          <div className="waitlist-heading">
-            <SectionEyebrow>LISTA DE ESPERA</SectionEyebrow>
-            <h2>Sé de los primeros en descubrir TROBY.</h2>
-            <p>
-              Apúntate a la lista de espera y entérate cuando la plataforma esté disponible.
-              Estamos preparando el siguiente paso de la web para habilitar el registro.
-            </p>
-          </div>
-
-          <div className="waitlist-grid">
-            <article>
-              <UserRound size={31} />
-              <h3>Soy cliente</h3>
-              <p>Quiero encontrar profesionales y empresas para los servicios que necesito.</p>
-              <button type="button" className="button button-dark waitlist-button">
-                Próximamente <ArrowRight size={14} />
-              </button>
-            </article>
-            <article>
-              <BriefcaseBusiness size={31} />
-              <h3>Soy autónomo</h3>
-              <p>Quiero ofrecer mis servicios, recibir solicitudes y llegar a más clientes.</p>
-              <button type="button" className="button button-dark waitlist-button">
-                Próximamente <ArrowRight size={14} />
-              </button>
-            </article>
-            <article>
-              <Building2 size={31} />
-              <h3>Soy empresa</h3>
-              <p>Quiero mostrar los servicios de mi empresa y conectar con nuevos clientes.</p>
-              <button type="button" className="button button-dark waitlist-button">
-                Próximamente <ArrowRight size={14} />
-              </button>
-            </article>
-          </div>
-
-          <div className="info-strip">
-            <Mail size={29} />
-            <div>
-              <strong>La lista de espera será el siguiente paso.</strong>
-              <span>El formulario todavía no está activo; estos botones indican el estado real del lanzamiento.</span>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="footer">

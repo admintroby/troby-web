@@ -119,16 +119,26 @@ h3 {
   color: #51646f;
 }
 
-.desktop-nav a {
+.desktop-nav a,
+.nav-link-button {
   position: relative;
   padding: 23px 0 20px;
 }
 
-.desktop-nav a:hover {
+.nav-link-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.desktop-nav a:hover,
+.nav-link-button:hover {
   color: #0d171c;
 }
 
-.desktop-nav a:hover::after {
+.desktop-nav a:hover::after,
+.nav-link-button:hover::after {
   content: "";
   position: absolute;
   left: 0;
@@ -360,6 +370,14 @@ h3 {
   gap: 7px;
   font-size: 0.78rem;
   font-weight: 750;
+}
+
+.text-link-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
 }
 
 .section-copy-wide {
@@ -636,33 +654,90 @@ h3 {
   font-size: 0.77rem;
 }
 
-.waitlist-heading {
-  max-width: 850px;
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(12, 21, 25, 0.48);
+  backdrop-filter: blur(10px);
 }
 
-.waitlist-grid {
+.waitlist-modal {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: min(760px, calc(100vh - 48px));
+  overflow-y: auto;
+  padding: clamp(34px, 5vw, 58px);
+  border: 1px solid rgba(197, 214, 222, 0.95);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.99), rgba(249,252,253,0.97)),
+    white;
+  box-shadow: 0 30px 90px rgba(17, 31, 37, 0.24);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: white;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.waitlist-modal-heading {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.waitlist-modal-heading p {
+  margin-bottom: 0;
+}
+
+.waitlist-modal-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin: 48px 0 30px;
+  gap: 18px;
 }
 
-.waitlist-grid article {
-  min-height: 300px;
+.waitlist-modal-card {
+  min-height: 290px;
   display: flex;
   flex-direction: column;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.76);
 }
 
-.waitlist-grid article h3 {
-  margin-top: 34px;
+.waitlist-modal-card h3 {
+  margin-top: 28px;
 }
 
-.waitlist-grid article p {
+.waitlist-modal-card p {
   flex: 1;
 }
 
 .waitlist-button {
   width: 100%;
+}
+
+.waitlist-modal-notice {
+  margin: 22px 0 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #eef4f6;
+  color: #536872;
+  font-size: 0.8rem;
 }
 
 .footer {
@@ -784,14 +859,16 @@ h3 {
     display: none;
   }
 
-  .desktop-nav a {
+  .desktop-nav a,
+  .nav-link-button {
     flex: 0 0 auto;
     padding: 19px 0 17px;
     white-space: nowrap;
     font-size: 0.66rem;
   }
 
-  .desktop-nav a:hover::after {
+  .desktop-nav a:hover::after,
+  .nav-link-button:hover::after {
     bottom: 10px;
   }
 
@@ -874,9 +951,39 @@ h3 {
 
   .benefits-grid,
   .categories-grid,
-  .values-grid,
-  .waitlist-grid {
+  .values-grid {
     grid-template-columns: 1fr;
+  }
+
+  .modal-backdrop {
+    padding: 12px;
+    align-items: end;
+  }
+
+  .waitlist-modal {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+    padding: 34px 18px 22px;
+    border-radius: 18px 18px 10px 10px;
+  }
+
+  .waitlist-modal-heading {
+    padding-right: 36px;
+    margin-bottom: 24px;
+  }
+
+  .waitlist-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .waitlist-modal-card {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .waitlist-modal-card h3 {
+    margin-top: 18px;
   }
 
   .category-card {
