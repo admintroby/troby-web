@@ -463,10 +463,15 @@ function App() {
               alt="TROBY"
             />
             <h1>Tu servicio, más cerca.</h1>
-            <button className="button button-dark hero-waitlist-button" type="button" onClick={() => setIsWaitlistOpen(true)}>
-              Únete a la lista de espera
-              <ArrowRight size={15} />
-            </button>
+            <div className="hero-actions">
+              <button className="button button-dark hero-waitlist-button" type="button" onClick={() => setIsWaitlistOpen(true)}>
+                Únete a la lista de espera
+                <ArrowRight size={15} />
+              </button>
+              <button className="button button-light hero-events-button" type="button" disabled aria-disabled="true">
+                Ver eventos
+              </button>
+            </div>
           </div>
         </section>
 
