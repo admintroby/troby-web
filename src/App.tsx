@@ -147,6 +147,7 @@ function Header() {
           <a href="#categorias">Categorías</a>
           <a href="#faq">FAQ</a>
           <a href="#sobre-troby">Sobre TROBY</a>
+          <a className="mobile-nav-only" href="#lista-espera">Lista de espera</a>
         </nav>
         <a className="button button-dark button-small" href="#lista-espera">
           Únete a la lista de espera
