@@ -143,7 +143,6 @@ function Header() {
         <nav className="desktop-nav" aria-label="Navegación principal">
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#ventajas">Ventajas</a>
-          <a href="#categorias">Categorías</a>
           <a href="#faq">FAQ</a>
           <a href="#sobre-troby">Sobre TROBY</a>
         </nav>
@@ -249,6 +248,69 @@ function WaitlistModal({
   )
 }
 
+function CategoriesModal({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) {
+  useEffect(() => {
+    if (!open) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open, onClose])
+
+  if (!open) return null
+
+  return (
+    <div
+      className="modal-backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <section className="categories-modal" role="dialog" aria-modal="true" aria-labelledby="categories-title">
+        <button className="modal-close" type="button" onClick={onClose} aria-label="Cerrar">
+          <X size={20} />
+        </button>
+
+        <div className="categories-modal-heading">
+          <SectionEyebrow>CATEGORÍAS</SectionEyebrow>
+          <h2 id="categories-title">Encuentra el servicio que necesitas.</h2>
+          <p>Estas son las 21 categorías principales disponibles actualmente en TROBY.</p>
+        </div>
+
+        <div className="categories-modal-grid">
+          {categories.map(({ code, label, icon: Icon, color }) => (
+            <article className="category-card category-card-modal" key={code}>
+              <div
+                className="category-icon"
+                style={{ backgroundColor: color + '24', borderColor: color + '66' }}
+              >
+                <Icon size={24} strokeWidth={1.6} />
+              </div>
+              <span>{label}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  )
+}
+
 function PhonePreview() {
   return (
     <div className="phone-shell" aria-label="Vista previa conceptual de la app TROBY">
@@ -283,11 +345,13 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 
 function App() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false)
 
   return (
     <>
       <Header />
       <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+      <CategoriesModal open={isCategoriesOpen} onClose={() => setIsCategoriesOpen(false)} />
 
       <main>
         <section className="hero hero-minimal section" id="inicio">
@@ -316,8 +380,16 @@ function App() {
           </div>
 
           <div className="steps-grid">
-            <article className="step-card">
+            <article className="step-card step-card-categories">
               <span className="step-number">1</span>
+              <button
+                type="button"
+                className="step-categories-button"
+                onClick={() => setIsCategoriesOpen(true)}
+              >
+                Ver categorías
+                <ArrowRight size={13} />
+              </button>
               <Search size={38} strokeWidth={1.45} />
               <h3>Encuentra el servicio</h3>
               <p>Explora categorías, perfiles y valoraciones para elegir al profesional o empresa que encaje contigo.</p>
@@ -340,12 +412,6 @@ function App() {
               <h3>Gestiona y valora</h3>
               <p>Sigue el pedido, confirma la finalización del trabajo y deja una valoración si quieres.</p>
             </article>
-          </div>
-
-          <div className="center-action">
-            <a className="button button-light" href="#categorias">
-              Ver categorías disponibles <ArrowRight size={14} />
-            </a>
           </div>
 
           <div className="info-strip">
@@ -383,43 +449,6 @@ function App() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section className="section" id="categorias">
-          <div className="categories-heading">
-            <div>
-              <SectionEyebrow>CATEGORÍAS</SectionEyebrow>
-              <h2>Los mismos servicios que encontrarás en la app.</h2>
-              <p>
-                Estas son las 21 categorías principales activas actualmente en TROBY.
-                Cada una agrupa sus propias subcategorías de servicios.
-              </p>
-            </div>
-            <div className="categories-meta" aria-label="21 categorías principales">
-              <Grid2X2 size={18} />
-              <strong>21</strong>
-              <span>categorías principales</span>
-            </div>
-          </div>
-
-          <div className="categories-grid">
-            {categories.map(({ code, label, icon: Icon, color }) => (
-              <article className="category-card" key={code}>
-                <div
-                  className="category-icon"
-                  style={{ backgroundColor: color + '24', borderColor: color + '66' }}
-                >
-                  <Icon size={26} strokeWidth={1.6} />
-                </div>
-                <span>{label}</span>
-              </article>
-            ))}
-          </div>
-
-          <p className="categories-footnote">
-            La web utiliza la misma estructura de categorías principales que la aplicación para evitar
-            que un usuario encuentre servicios distintos según dónde consulte TROBY.
-          </p>
         </section>
 
         <section className="section faq-section" id="faq">
