@@ -238,7 +238,7 @@ h3 {
 }
 
 .hero-minimal {
-  min-height: min(560px, calc(100vh - 120px));
+  min-height: min(620px, calc(100vh - 105px));
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
@@ -260,8 +260,16 @@ h3 {
 }
 
 .hero-brand h1 {
-  margin: 34px 0 30px;
+  margin: 34px 0 18px;
   font-size: clamp(2.6rem, 5vw, 5.3rem);
+}
+
+.hero-intro {
+  max-width: 610px;
+  margin: 0 0 28px;
+  color: #5f737e;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -1130,8 +1138,8 @@ h3 {
   }
 
   .hero-minimal {
-    min-height: auto;
-    padding: 40px 22px 50px;
+    min-height: calc(100svh - 102px);
+    padding: 34px 22px 44px;
   }
 
   .hero-brand-logo {
@@ -1139,8 +1147,15 @@ h3 {
   }
 
   .hero-brand h1 {
-    margin: 26px 0 26px;
+    margin: 24px 0 14px;
     font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .hero-intro {
+    max-width: 520px;
+    margin-bottom: 24px;
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
 
   .hero-waitlist-button {
