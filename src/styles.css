@@ -445,6 +445,27 @@ h3 {
   font-size: 0.78rem;
 }
 
+.step-categories-button {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #334952;
+  font-size: 0.68rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.step-categories-button:hover {
+  background: #f3f7f8;
+}
+
 .step-card h3 {
   margin-top: 28px;
 }
@@ -735,18 +756,31 @@ h3 {
   position: fixed;
   inset: 0;
   z-index: 500;
-  display: grid;
-  place-items: center;
-  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    24px
+    max(20px, env(safe-area-inset-bottom));
   background: rgba(12, 21, 25, 0.48);
   backdrop-filter: blur(10px);
+  -webkit-overflow-scrolling: touch;
 }
 
-.waitlist-modal {
+.waitlist-modal,
+.categories-modal {
   position: relative;
+  margin: auto 0;
   width: min(1120px, 100%);
-  max-height: min(760px, calc(100vh - 48px));
+  max-height: calc(100dvh - 40px);
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: clamp(34px, 5vw, 58px);
   border: 1px solid rgba(197, 214, 222, 0.95);
   border-radius: 18px;
@@ -754,6 +788,10 @@ h3 {
     linear-gradient(145deg, rgba(255,255,255,0.99), rgba(249,252,253,0.97)),
     white;
   box-shadow: 0 30px 90px rgba(17, 31, 37, 0.24);
+}
+
+.categories-modal {
+  width: min(1180px, 100%);
 }
 
 .modal-close {
@@ -815,6 +853,28 @@ h3 {
   background: #eef4f6;
   color: #536872;
   font-size: 0.8rem;
+}
+
+.categories-modal-heading {
+  max-width: 780px;
+  padding-right: 42px;
+  margin-bottom: 28px;
+}
+
+.categories-modal-heading p {
+  margin-bottom: 0;
+}
+
+.categories-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.category-card-modal {
+  min-height: 94px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .footer {
@@ -883,8 +943,11 @@ h3 {
     border-top: 1px solid var(--line);
   }
 
-  .benefits-grid,
-  .categories-grid {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categories-modal-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1039,29 +1102,45 @@ h3 {
   }
 
   .benefits-grid,
-  .categories-grid,
   .values-grid {
     grid-template-columns: 1fr;
   }
 
   .modal-backdrop {
-    padding: 12px;
-    align-items: end;
+    height: 100dvh;
+    min-height: 100svh;
+    padding:
+      max(10px, env(safe-area-inset-top))
+      10px
+      max(10px, env(safe-area-inset-bottom));
   }
 
-  .waitlist-modal {
+  .waitlist-modal,
+  .categories-modal {
     width: 100%;
-    max-height: calc(100vh - 24px);
-    padding: 34px 18px 22px;
-    border-radius: 18px 18px 10px 10px;
+    max-height: none;
+    margin: 0;
+    overflow: visible;
+    padding: 48px 18px 22px;
+    border-radius: 16px;
   }
 
-  .waitlist-modal-heading {
+  .modal-close {
+    position: sticky;
+    top: 8px;
+    z-index: 2;
+    margin-left: auto;
+    margin-bottom: -40px;
+  }
+
+  .waitlist-modal-heading,
+  .categories-modal-heading {
     padding-right: 36px;
     margin-bottom: 24px;
   }
 
-  .waitlist-modal-grid {
+  .waitlist-modal-grid,
+  .categories-modal-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
@@ -1073,6 +1152,18 @@ h3 {
 
   .waitlist-modal-card h3 {
     margin-top: 18px;
+  }
+
+  .category-card-modal {
+    min-height: 84px;
+    padding: 14px 16px;
+  }
+
+  .step-categories-button {
+    top: 20px;
+    right: 8px;
+    padding: 6px 9px;
+    font-size: 0.64rem;
   }
 
   .category-card {
