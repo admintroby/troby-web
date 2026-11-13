@@ -463,6 +463,10 @@ function App() {
               alt="TROBY"
             />
             <h1>Tu servicio, más cerca.</h1>
+            <p className="hero-intro">
+              Encuentra profesionales y empresas de tu zona, solicita el servicio que necesitas
+              y gestiona todo desde un mismo lugar.
+            </p>
             <div className="hero-actions">
               <button className="button button-dark hero-waitlist-button" type="button" onClick={() => setIsWaitlistOpen(true)}>
                 Únete a la lista de espera
