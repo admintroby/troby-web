@@ -6,7 +6,6 @@ import {
   CarFront,
   CircleHelp,
   Clock3,
-  Eye,
   GraduationCap,
   Grid2X2,
   Heart,
@@ -141,12 +140,10 @@ function Header() {
       <div className="header-inner">
         <Logo />
         <nav className="desktop-nav" aria-label="Navegación principal">
-          <a href="#inicio">Inicio</a>
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#ventajas">Ventajas</a>
           <a href="#categorias">Categorías</a>
           <a href="#faq">FAQ</a>
-          <a href="#sobre-troby">Sobre TROBY</a>
           <a className="mobile-nav-only" href="#lista-espera">Lista de espera</a>
         </nav>
         <a className="button button-dark button-small" href="#lista-espera">
@@ -384,47 +381,6 @@ function App() {
                 <p>{answer}</p>
               </details>
             ))}
-          </div>
-        </section>
-
-        <section className="section about-section" id="sobre-troby">
-          <div className="about-top">
-            <div>
-              <SectionEyebrow>SOBRE TROBY</SectionEyebrow>
-              <h2>Conectamos personas con profesionales de confianza.</h2>
-              <p>
-                TROBY nace con una idea clara: hacer más fácil encontrar, comparar y contratar servicios
-                profesionales cercanos. Queremos que el talento local tenga una forma sencilla de llegar
-                a nuevos clientes y que cada cliente pueda decidir con más información.
-              </p>
-            </div>
-            <div className="about-logo-card">
-              <Logo />
-              <span>Servicios reales.<br />Personas reales.</span>
-            </div>
-          </div>
-
-          <div className="values-grid">
-            <article>
-              <Target size={28} />
-              <h3>Nuestra misión</h3>
-              <p>Facilitar el acceso a servicios profesionales y conectar personas con talento local.</p>
-            </article>
-            <article>
-              <Eye size={28} />
-              <h3>Nuestra visión</h3>
-              <p>Construir una plataforma de referencia para encontrar servicios profesionales de confianza.</p>
-            </article>
-            <article>
-              <Heart size={28} />
-              <h3>Nuestros valores</h3>
-              <p>Confianza, cercanía, transparencia y una experiencia sencilla para ambas partes.</p>
-            </article>
-            <article>
-              <Users size={28} />
-              <h3>Nuestro equipo</h3>
-              <p>Un equipo joven desarrollando TROBY desde España con una visión de crecimiento progresivo.</p>
-            </article>
           </div>
         </section>
 

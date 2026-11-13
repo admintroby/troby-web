@@ -754,15 +754,26 @@ h3 {
     gap: 12px;
   }
 
-  .brand-logo {
-    width: 82px;
+  .site-header .brand {
+    position: relative;
+    width: 38px;
+    height: 48px;
+    overflow: hidden;
+  }
+
+  .site-header .brand-logo {
+    position: absolute;
+    top: 0;
+    left: -79px;
+    width: 110px;
+    max-width: none;
   }
 
   .desktop-nav {
     display: flex;
     min-width: 0;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 14px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -777,7 +788,7 @@ h3 {
     flex: 0 0 auto;
     padding: 19px 0 17px;
     white-space: nowrap;
-    font-size: 0.72rem;
+    font-size: 0.66rem;
   }
 
   .desktop-nav a:hover::after {
