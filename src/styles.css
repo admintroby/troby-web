@@ -695,8 +695,18 @@ h3 {
   max-width: 780px;
 }
 
+.about-app-copy-wide {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.about-app-copy-wide > p {
+  max-width: 900px;
+}
+
 .about-audiences {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 34px;
 }
@@ -855,21 +865,83 @@ h3 {
 }
 
 .footer {
-  width: min(1480px, calc(100% - 64px));
-  margin: 70px auto 90px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  width: min(1420px, calc(100% - 48px));
+  margin: 28px auto 70px;
+  padding: 34px 42px;
+  display: flex;
   align-items: center;
-  gap: 30px;
+  justify-content: space-between;
+  gap: 32px;
+  border: 1px solid rgba(197, 214, 222, 0.95);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 55px rgba(49, 73, 84, 0.05);
 }
 
-.footer-line {
-  height: 1px;
-  background: #9db0ba;
+.footer-brand {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-brand p {
+  margin: 0;
+  font-size: 0.78rem;
 }
 
 .footer .brand-logo {
   width: 165px;
+}
+
+.footer-contact {
+  display: grid;
+  justify-items: end;
+  gap: 9px;
+}
+
+.footer-label {
+  color: #50636e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.social-links a,
+.social-link-disabled {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: white;
+  color: var(--ink);
+}
+
+.social-links a {
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  background: #f1f6f7;
+}
+
+.social-link-disabled {
+  color: #a7b3b9;
+  background: #f4f7f8;
+  cursor: not-allowed;
+}
+
+.footer-contact small {
+  color: #8a9aa2;
+  font-size: 0.68rem;
 }
 
 @media (max-width: 1100px) {
@@ -1177,8 +1249,8 @@ h3 {
     gap: 28px;
   }
 
-  .about-app-preview {
-    min-height: 420px;
+  .about-audiences {
+    grid-template-columns: 1fr;
   }
 
   .about-audiences article {
@@ -1196,8 +1268,27 @@ h3 {
   }
 
   .footer {
-    width: calc(100% - 32px);
-    margin-block: 45px;
-    gap: 16px;
+    width: calc(100% - 24px);
+    margin: 14px auto 45px;
+    padding: 28px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .footer-contact {
+    width: 100%;
+    justify-items: start;
+  }
+
+  .social-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .social-links a,
+  .social-link-disabled {
+    width: 46px;
+    height: 46px;
   }
 }
