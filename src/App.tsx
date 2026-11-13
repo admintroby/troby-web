@@ -7,12 +7,15 @@ import {
   CarFront,
   CircleHelp,
   Clock3,
+  Facebook,
   GraduationCap,
   Grid2X2,
   Heart,
   HeartPulse,
   House,
+  Instagram,
   Leaf,
+  Mail,
   MapPin,
   MessageCircle,
   MoreHorizontal,
@@ -123,6 +126,25 @@ const faqs = [
   },
 ]
 
+function TikTokIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14 4v10.2a4.2 4.2 0 1 1-3.4-4.1" />
+      <path d="M14 4c.8 2.5 2.3 4 5 4.6" />
+    </svg>
+  )
+}
+
 function Logo() {
   return (
     <a className="brand" href="#inicio" aria-label="TROBY, inicio">
@@ -145,6 +167,7 @@ function Header() {
           <a href="#ventajas">Ventajas</a>
           <a href="#faq">FAQ</a>
           <a href="#sobre-troby">Sobre TROBY</a>
+          <a href="#contacto">Contacto</a>
         </nav>
       </div>
     </header>
@@ -311,34 +334,6 @@ function CategoriesModal({
   )
 }
 
-function PhonePreview() {
-  return (
-    <div className="phone-shell" aria-label="Vista previa conceptual de la app TROBY">
-      <div className="phone-speaker" />
-      <div className="phone-screen">
-        <div className="phone-logo">TROBY</div>
-        <div className="phone-search">
-          <Search size={13} />
-          <span>¿Qué servicio necesitas?</span>
-        </div>
-        <div className="phone-grid">
-          {categories.slice(0, 9).map(({ code, shortLabel, icon: Icon, color }) => (
-            <div className="phone-category" key={code}>
-              <div
-                className="phone-category-icon"
-                style={{ backgroundColor: color + '24', borderColor: color + '66' }}
-              >
-                <Icon size={15} strokeWidth={1.7} />
-              </div>
-              <span>{shortLabel}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow">{children}</p>
 }
@@ -473,50 +468,86 @@ function App() {
 
 
         <section className="section about-section" id="sobre-troby">
-          <div className="about-app-grid">
-            <div className="about-app-copy">
-              <SectionEyebrow>SOBRE TROBY</SectionEyebrow>
-              <h2>Una forma más sencilla de encontrar y contratar servicios profesionales.</h2>
-              <p>
-                TROBY es una aplicación que conecta a clientes con autónomos y empresas de su zona.
-                El objetivo es que encontrar a la persona adecuada, explicar qué necesitas, recibir
-                una oferta y seguir el servicio sea un proceso claro y centralizado.
-              </p>
-              <p>
-                El cliente puede comparar perfiles, valoraciones y servicios antes de enviar una solicitud.
-                El profesional recibe esa solicitud, habla con el cliente y puede enviar una oferta que,
-                al aceptarse, pasa a convertirse en un pedido dentro de la aplicación.
-              </p>
+          <div className="about-app-copy about-app-copy-wide">
+            <SectionEyebrow>SOBRE TROBY</SectionEyebrow>
+            <h2>Una forma más sencilla de encontrar y contratar servicios profesionales.</h2>
+            <p>
+              TROBY es una aplicación que conecta a clientes con autónomos y empresas de su zona.
+              El objetivo es que encontrar a la persona adecuada, explicar qué necesitas, recibir
+              una oferta y seguir el servicio sea un proceso claro y centralizado.
+            </p>
+            <p>
+              El cliente puede comparar perfiles, valoraciones y servicios antes de enviar una solicitud.
+              El profesional recibe esa solicitud, habla con el cliente y puede enviar una oferta que,
+              al aceptarse, pasa a convertirse en un pedido dentro de la aplicación.
+            </p>
 
-              <div className="about-audiences">
-                <article>
-                  <UserRound size={28} strokeWidth={1.5} />
-                  <div>
-                    <h3>Para clientes</h3>
-                    <p>Encuentra profesionales, compara opciones y gestiona cada servicio desde un mismo lugar.</p>
-                  </div>
-                </article>
-                <article>
-                  <BriefcaseBusiness size={28} strokeWidth={1.5} />
-                  <div>
-                    <h3>Para profesionales y empresas</h3>
-                    <p>Da visibilidad a tus servicios, recibe solicitudes y convierte oportunidades en pedidos.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
-
-            <div className="about-app-preview">
-              <PhonePreview />
+            <div className="about-audiences">
+              <article>
+                <UserRound size={28} strokeWidth={1.5} />
+                <div>
+                  <h3>Para clientes</h3>
+                  <p>Encuentra profesionales, compara opciones y gestiona cada servicio desde un mismo lugar.</p>
+                </div>
+              </article>
+              <article>
+                <BriefcaseBusiness size={28} strokeWidth={1.5} />
+                <div>
+                  <h3>Para profesionales y empresas</h3>
+                  <p>Da visibilidad a tus servicios, recibe solicitudes y convierte oportunidades en pedidos.</p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="footer-line" />
-        <Logo />
-        <div className="footer-line" />
+      <footer className="footer" id="contacto">
+        <div className="footer-brand">
+          <Logo />
+          <p>Tu servicio, más cerca.</p>
+        </div>
+
+        <div className="footer-contact">
+          <span className="footer-label">Síguenos</span>
+          <div className="social-links" aria-label="Redes sociales de TROBY">
+            <a
+              href="https://www.instagram.com/trobyapp?mdxt=dm8zOWl3amozMzBq&utm_source=qr"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de TROBY"
+              title="Instagram"
+            >
+              <Instagram size={22} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@trobyapp?_r=1&_t=ZN-9BNRyYzKUoI"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok de TROBY"
+              title="TikTok"
+            >
+              <TikTokIcon size={22} />
+            </a>
+            <a
+              href="https://www.facebook.com/share/1FQ4984eHg/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook de TROBY"
+              title="Facebook"
+            >
+              <Facebook size={22} />
+            </a>
+            <span
+              className="social-link-disabled"
+              aria-label="Correo de TROBY, próximamente"
+              title="Correo próximamente"
+            >
+              <Mail size={22} />
+            </span>
+          </div>
+          <small>Correo próximamente</small>
+        </div>
       </footer>
     </>
   )
