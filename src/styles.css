@@ -504,7 +504,7 @@ h3 {
 .faq-heading,
 .about-top {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.65fr);
+  grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
 }
@@ -516,34 +516,11 @@ h3 {
   max-width: 700px;
 }
 
-.benefit-orbit {
-  width: min(280px, 100%);
-  aspect-ratio: 1;
-  justify-self: center;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-  gap: 8px;
-  padding: 28px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #f7fafb, #eaf1f4);
-}
-
-.benefit-orbit span {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #d2dfe4;
-  border-radius: 50%;
-  background: white;
-}
-
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
-  margin: 50px 0 28px;
+  margin: 42px 0 28px;
 }
 
 .benefit-card,
@@ -943,10 +920,6 @@ h3 {
     border-top: 1px solid var(--line);
   }
 
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .categories-modal-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1199,8 +1172,7 @@ h3 {
     padding: 20px;
   }
 
-  .faq-illustration,
-  .benefit-orbit {
+  .faq-illustration {
     width: min(220px, 72vw);
   }
 
