@@ -1074,7 +1074,26 @@ h3 {
     margin-top: 18px;
   }
 
-  .benefits-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .benefit-card {
+    min-height: 190px;
+    padding: 16px;
+  }
+
+  .benefit-card h3 {
+    margin-top: 22px;
+    font-size: 0.82rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+
   .values-grid {
     grid-template-columns: 1fr;
   }
