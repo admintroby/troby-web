@@ -7,13 +7,11 @@ import {
   CarFront,
   CircleHelp,
   Clock3,
-  Facebook,
   GraduationCap,
   Grid2X2,
   Heart,
   HeartPulse,
   House,
-  Instagram,
   Leaf,
   Mail,
   MapPin,
@@ -125,6 +123,40 @@ const faqs = [
       'Estamos preparando el lanzamiento. Puedes apuntarte a la lista de espera para enterarte cuando la plataforma esté disponible.',
   },
 ]
+
+function InstagramIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.4" cy="6.7" r="0.8" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function FacebookIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M13.6 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2H7.4v3h2.8v8h3.4Z" />
+    </svg>
+  )
+}
 
 function TikTokIcon({ size = 22 }: { size?: number }) {
   return (
@@ -518,7 +550,7 @@ function App() {
               aria-label="Instagram de TROBY"
               title="Instagram"
             >
-              <Instagram size={22} />
+              <InstagramIcon size={22} />
             </a>
             <a
               href="https://www.tiktok.com/@trobyapp?_r=1&_t=ZN-9BNRyYzKUoI"
@@ -536,7 +568,7 @@ function App() {
               aria-label="Facebook de TROBY"
               title="Facebook"
             >
-              <Facebook size={22} />
+              <FacebookIcon size={22} />
             </a>
             <span
               className="social-link-disabled"
