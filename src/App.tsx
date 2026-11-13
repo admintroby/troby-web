@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -189,17 +189,51 @@ function Logo() {
   )
 }
 
-function Header() {
+function Header({ activeSection }: { activeSection: string }) {
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!activeSection || !navRef.current) return
+
+    const activeLink = navRef.current.querySelector<HTMLAnchorElement>(
+      `[data-section="${activeSection}"]`,
+    )
+
+    if (!activeLink) return
+
+    const targetLeft =
+      activeLink.offsetLeft - navRef.current.clientWidth / 2 + activeLink.clientWidth / 2
+
+    navRef.current.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: 'smooth',
+    })
+  }, [activeSection])
+
+  const links = [
+    { id: 'como-funciona', label: 'Cómo funciona' },
+    { id: 'ventajas', label: 'Ventajas' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'sobre-troby', label: 'Sobre TROBY' },
+    { id: 'contacto', label: 'Contacto' },
+  ]
+
   return (
     <header className="site-header">
       <div className="header-inner">
         <Logo />
-        <nav className="desktop-nav" aria-label="Navegación principal">
-          <a href="#como-funciona">Cómo funciona</a>
-          <a href="#ventajas">Ventajas</a>
-          <a href="#faq">FAQ</a>
-          <a href="#sobre-troby">Sobre TROBY</a>
-          <a href="#contacto">Contacto</a>
+        <nav ref={navRef} className="desktop-nav" aria-label="Navegación principal">
+          {links.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              data-section={id}
+              className={activeSection === id ? 'nav-link-active' : undefined}
+              aria-current={activeSection === id ? 'location' : undefined}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
@@ -373,10 +407,50 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 function App() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+
+  useEffect(() => {
+    const sectionIds = ['como-funciona', 'ventajas', 'faq', 'sobre-troby', 'contacto']
+
+    const updateActiveSection = () => {
+      const marker = Math.min(window.innerHeight * 0.34, 240)
+      let current = ''
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id)
+        if (!element) continue
+
+        const rect = element.getBoundingClientRect()
+
+        if (rect.top <= marker) {
+          current = id
+        } else {
+          break
+        }
+      }
+
+      const nearBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80
+
+      if (nearBottom) current = 'contacto'
+
+      setActiveSection(current)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
+  }, [])
 
   return (
     <>
-      <Header />
+      <Header activeSection={activeSection} />
       <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
       <CategoriesModal open={isCategoriesOpen} onClose={() => setIsCategoriesOpen(false)} />
 
