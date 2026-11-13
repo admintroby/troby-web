@@ -238,11 +238,11 @@ h3 {
 }
 
 .hero-minimal {
-  min-height: min(680px, calc(100vh - 120px));
+  min-height: min(560px, calc(100vh - 120px));
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
-  padding-block: clamp(70px, 10vw, 130px);
+  padding-block: clamp(42px, 6vw, 76px);
   text-align: center;
 }
 
@@ -264,9 +264,30 @@ h3 {
   font-size: clamp(2.6rem, 5vw, 5.3rem);
 }
 
-.hero-waitlist-button {
+.hero-actions {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.hero-waitlist-button,
+.hero-events-button {
   min-height: 50px;
+  min-width: 230px;
   padding-inline: 26px;
+}
+
+.hero-events-button:disabled {
+  color: #8d9aa1;
+  background: #f3f6f7;
+  border-color: #d7e0e4;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.hero-events-button:disabled:hover {
+  transform: none;
 }
 
 .hero-copy {
@@ -1109,8 +1130,8 @@ h3 {
   }
 
   .hero-minimal {
-    min-height: calc(100svh - 92px);
-    padding: 56px 22px 64px;
+    min-height: auto;
+    padding: 40px 22px 50px;
   }
 
   .hero-brand-logo {
